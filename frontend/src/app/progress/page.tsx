@@ -298,14 +298,14 @@ export default function ProgressPage() {
     return (
       <div
         className="min-h-screen flex items-center justify-center"
-        style={{ backgroundColor: tokens.colors.background }}
+        style={{ backgroundColor: tokens.background }}
       >
         <div className="flex flex-col items-center gap-4">
           <div
             className="w-12 h-12 rounded-full border-4 border-t-transparent animate-spin"
-            style={{ borderColor: `${tokens.colors.primary} transparent ${tokens.colors.primary} ${tokens.colors.primary}` }}
+            style={{ borderColor: `${tokens.primary} transparent ${tokens.primary} ${tokens.primary}` }}
           ></div>
-          <p style={{ color: tokens.colors.textSecondary || tokens.colors.text }}>Loading your progress...</p>
+          <p style={{ color: tokens.textSecondary || tokens.text }}>Loading your progress...</p>
         </div>
       </div>
     )
@@ -314,18 +314,18 @@ export default function ProgressPage() {
   return (
     <div
       className="min-h-screen"
-      style={{ backgroundColor: tokens.colors.background }}
+      style={{ backgroundColor: tokens.background }}
     >
       <div className="max-w-6xl mx-auto px-4 py-8">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
           <div>
             <h1
               className="text-3xl font-bold"
-              style={{ color: tokens.colors.text }}
+              style={{ color: tokens.text }}
             >
               Progress & Analytics
             </h1>
-            <p className="mt-1 text-sm" style={{ color: tokens.colors.text, opacity: 0.6 }}>
+            <p className="mt-1 text-sm" style={{ color: tokens.text, opacity: 0.6 }}>
               Track your habit completion trends over time
             </p>
           </div>
@@ -356,15 +356,15 @@ export default function ProgressPage() {
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
           {[
-            { label: 'Avg Completion Rate', value: `${overallRate}%`, icon: '📊', color: tokens.colors.primary },
+            { label: 'Avg Completion Rate', value: `${overallRate}%`, icon: '📊', color: tokens.primary },
             { label: 'Total Completions', value: totalCompletionsInRange, icon: '✅', color: '#10b981' },
-            { label: 'Best Current Streak', value: `${bestStreak}d`, icon: '🔥', color: tokens.colors.accent },
+            { label: 'Best Current Streak', value: `${bestStreak}d`, icon: '🔥', color: tokens.accent },
             { label: 'Perfect Days', value: perfectDays, icon: '⭐', color: '#f59e0b' },
           ].map((stat) => (
             <Card key={stat.label} className="p-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <p className="text-xs font-medium mb-1" style={{ color: tokens.colors.text, opacity: 0.6 }}>
+                  <p className="text-xs font-medium mb-1" style={{ color: tokens.text, opacity: 0.6 }}>
                     {stat.label}
                   </p>
                   <p className="text-2xl font-bold" style={{ color: stat.color }}>
@@ -381,7 +381,7 @@ export default function ProgressPage() {
           <div className="lg:col-span-2">
             <Card className="p-6">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-lg font-semibold" style={{ color: tokens.colors.text }}>
+                <h2 className="text-lg font-semibold" style={{ color: tokens.text }}>
                   Weekly Completion Trend
                 </h2>
                 <select
@@ -389,9 +389,9 @@ export default function ProgressPage() {
                   onChange={(e) => setSelectedHabit(e.target.value)}
                   className="text-sm rounded-lg px-3 py-1.5 border outline-none"
                   style={{
-                    backgroundColor: tokens.colors.surface,
-                    borderColor: tokens.colors.border,
-                    color: tokens.colors.text,
+                    backgroundColor: tokens.surface,
+                    borderColor: tokens.border,
+                    color: tokens.text,
                   }}
                 >
                   <option value="all">All Habits</option>
@@ -405,7 +405,7 @@ export default function ProgressPage() {
 
               {weeklyData.length === 0 ? (
                 <div className="flex items-center justify-center h-48">
-                  <p style={{ color: tokens.colors.text, opacity: 0.5 }}>No data available</p>
+                  <p style={{ color: tokens.text, opacity: 0.5 }}>No data available</p>
                 </div>
               ) : (
                 <div className="flex flex-col gap-2">
@@ -420,7 +420,7 @@ export default function ProgressPage() {
                             className="w-full rounded-t-md transition-all duration-300 cursor-pointer"
                             style={{
                               height: `${Math.max((week.completions / maxWeeklyCompletions) * 100, 4)}%`,
-                              backgroundColor: tokens.colors.primary,
+                              backgroundColor: tokens.primary,
                               opacity: 0.7 + (week.completions / maxWeeklyCompletions) * 0.3,
                             }}
                           ></div>
@@ -431,7 +431,7 @@ export default function ProgressPage() {
                   <div className="flex gap-1">
                     {weeklyData.slice(-12).map((week, idx) => (
                       <div key={idx} className="flex-1 text-center">
-                        <span className="text-xs" style={{ color: tokens.colors.text, opacity: 0.5 }}>
+                        <span className="text-xs" style={{ color: tokens.text, opacity: 0.5 }}>
                           {week.week.split(' ')[1]}
                         </span>
                       </div>
@@ -444,33 +444,33 @@ export default function ProgressPage() {
 
           <div>
             <Card className="p-6 h-full">
-              <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.colors.text }}>
+              <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.text }}>
                 Monthly Overview
               </h2>
               <div className="flex flex-col gap-3">
                 {monthlyData.slice(-3).map((month, idx) => (
                   <div key={idx}>
                     <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium" style={{ color: tokens.colors.text }}>
+                      <span className="text-sm font-medium" style={{ color: tokens.text }}>
                         {month.month}
                       </span>
-                      <span className="text-sm font-bold" style={{ color: tokens.colors.primary }}>
+                      <span className="text-sm font-bold" style={{ color: tokens.primary }}>
                         {month.rate}%
                       </span>
                     </div>
                     <div
                       className="w-full h-2 rounded-full overflow-hidden"
-                      style={{ backgroundColor: tokens.colors.border }}
+                      style={{ backgroundColor: tokens.border }}
                     >
                       <div
                         className="h-full rounded-full transition-all duration-500"
                         style={{
                           width: `${month.rate}%`,
-                          backgroundColor: month.rate >= 80 ? '#10b981' : month.rate >= 50 ? tokens.colors.primary : tokens.colors.accent,
+                          backgroundColor: month.rate >= 80 ? '#10b981' : month.rate >= 50 ? tokens.primary : tokens.accent,
                         }}
                       ></div>
                     </div>
-                    <p className="text-xs mt-0.5" style={{ color: tokens.colors.text, opacity: 0.5 }}>
+                    <p className="text-xs mt-0.5" style={{ color: tokens.text, opacity: 0.5 }}>
                       {month.completions} completions
                     </p>
                   </div>
@@ -481,7 +481,7 @@ export default function ProgressPage() {
         </div>
 
         <Card className="p-6 mb-6">
-          <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.colors.text }}>
+          <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.text }}>
             Activity Heatmap (Last 90 Days)
           </h2>
           <div className="overflow-x-auto">
@@ -508,13 +508,13 @@ export default function ProgressPage() {
               })}
             </div>
             <div className="flex items-center gap-2 mt-3">
-              <span className="text-xs" style={{ color: tokens.colors.text, opacity: 0.5 }}>
+              <span className="text-xs" style={{ color: tokens.text, opacity: 0.5 }}>
                 Less
               </span>
               {['#e0deff', '#c7d2fe', '#a5b4fc', '#818cf8', '#4f46e5'].map((color) => (
                 <div key={color} className="w-4 h-4 rounded-sm" style={{ backgroundColor: color }}></div>
               ))}
-              <span className="text-xs" style={{ color: tokens.colors.text, opacity: 0.5 }}>
+              <span className="text-xs" style={{ color: tokens.text, opacity: 0.5 }}>
                 More
               </span>
             </div>
@@ -522,12 +522,12 @@ export default function ProgressPage() {
         </Card>
 
         <Card className="p-6 mb-6">
-          <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.colors.text }}>
+          <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.text }}>
             Habit Performance
           </h2>
           {habitStats.length === 0 ? (
             <div className="text-center py-8">
-              <p className="text-lg mb-2" style={{ color: tokens.colors.text, opacity: 0.5 }}>
+              <p className="text-lg mb-2" style={{ color: tokens.text, opacity: 0.5 }}>
                 No habits found
               </p>
               <Button variant="primary" onClick={() => router.push('/dashboard')}>
@@ -538,12 +538,12 @@ export default function ProgressPage() {
             <div className="overflow-x-auto">
               <table className="w-full">
                 <thead>
-                  <tr style={{ borderBottom: `1px solid ${tokens.colors.border}` }}>
+                  <tr style={{ borderBottom: `1px solid ${tokens.border}` }}>
                     {['Habit', 'Completion Rate', 'Current Streak', 'Best Streak', 'Total', 'Last 30 Days'].map((h) => (
                       <th
                         key={h}
                         className="text-left pb-3 pr-4 text-sm font-medium"
-                        style={{ color: tokens.colors.text, opacity: 0.6 }}
+                        style={{ color: tokens.text, opacity: 0.6 }}
                       >
                         {h}
                       </th>
@@ -555,7 +555,7 @@ export default function ProgressPage() {
                     <tr
                       key={stat.id}
                       className="cursor-pointer hover:bg-opacity-50 transition-colors"
-                      style={{ borderBottom: `1px solid ${tokens.colors.border}` }}
+                      style={{ borderBottom: `1px solid ${tokens.border}` }}
                       onClick={() => router.push(`/habits/${stat.id}`)}
                     >
                       <td className="py-3 pr-4">
@@ -564,7 +564,7 @@ export default function ProgressPage() {
                             className="w-3 h-3 rounded-full flex-shrink-0"
                             style={{ backgroundColor: stat.color }}
                           ></div>
-                          <span className="font-medium text-sm" style={{ color: tokens.colors.text }}>
+                          <span className="font-medium text-sm" style={{ color: tokens.text }}>
                             {stat.name}
                           </span>
                         </div>
@@ -573,7 +573,7 @@ export default function ProgressPage() {
                         <div className="flex items-center gap-2">
                           <div
                             className="w-16 h-1.5 rounded-full overflow-hidden"
-                            style={{ backgroundColor: tokens.colors.border }}
+                            style={{ backgroundColor: tokens.border }}
                           >
                             <div
                               className="h-full rounded-full"
@@ -583,12 +583,12 @@ export default function ProgressPage() {
                                   stat.completionRate >= 80
                                     ? '#10b981'
                                     : stat.completionRate >= 50
-                                    ? tokens.colors.primary
-                                    : tokens.colors.accent,
+                                    ? tokens.primary
+                                    : tokens.accent,
                               }}
                             ></div>
                           </div>
-                          <span className="text-sm font-semibold" style={{ color: tokens.colors.text }}>
+                          <span className="text-sm font-semibold" style={{ color: tokens.text }}>
                             {stat.completionRate}%
                           </span>
                         </div>
@@ -596,18 +596,18 @@ export default function ProgressPage() {
                       <td className="py-3 pr-4">
                         <div className="flex items-center gap-1">
                           {stat.currentStreak > 0 && <span>🔥</span>}
-                          <span className="text-sm font-semibold" style={{ color: tokens.colors.text }}>
+                          <span className="text-sm font-semibold" style={{ color: tokens.text }}>
                             {stat.currentStreak}d
                           </span>
                         </div>
                       </td>
                       <td className="py-3 pr-4">
-                        <span className="text-sm" style={{ color: tokens.colors.text, opacity: 0.8 }}>
+                        <span className="text-sm" style={{ color: tokens.text, opacity: 0.8 }}>
                           {stat.longestStreak}d
                         </span>
                       </td>
                       <td className="py-3 pr-4">
-                        <span className="text-sm" style={{ color: tokens.colors.text, opacity: 0.8 }}>
+                        <span className="text-sm" style={{ color: tokens.text, opacity: 0.8 }}>
                           {stat.totalCompletions}
                         </span>
                       </td>
@@ -618,7 +618,7 @@ export default function ProgressPage() {
                               key={idx}
                               className="w-2 h-2 rounded-sm"
                               style={{
-                                backgroundColor: completed ? stat.color : tokens.colors.border,
+                                backgroundColor: completed ? stat.color : tokens.border,
                               }}
                             ></div>
                           ))}
@@ -633,12 +633,12 @@ export default function ProgressPage() {
         </Card>
 
         <Card className="p-6">
-          <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.colors.text }}>
+          <h2 className="text-lg font-semibold mb-4" style={{ color: tokens.text }}>
             Day of Week Analysis
           </h2>
           {completions.length === 0 ? (
             <div className="text-center py-4">
-              <p style={{ color: tokens.colors.text, opacity: 0.5 }}>Complete some habits to see patterns</p>
+              <p style={{ color: tokens.text, opacity: 0.5 }}>Complete some habits to see patterns</p>
             </div>
           ) : (
             <div className="grid grid-cols-7 gap-2">
@@ -652,23 +652,23 @@ export default function ProgressPage() {
                 const rate = expectedCompletions > 0 ? Math.min(Math.round((dayCompletions.length / expectedCompletions) * 100), 100) : 0
                 return (
                   <div key={day} className="flex flex-col items-center gap-2">
-                    <span className="text-xs font-medium" style={{ color: tokens.colors.text, opacity: 0.6 }}>
+                    <span className="text-xs font-medium" style={{ color: tokens.text, opacity: 0.6 }}>
                       {day}
                     </span>
                     <div
                       className="w-full rounded-lg flex items-end justify-center overflow-hidden"
-                      style={{ height: '80px', backgroundColor: tokens.colors.border }}
+                      style={{ height: '80px', backgroundColor: tokens.border }}
                     >
                       <div
                         className="w-full rounded-t-lg transition-all duration-500"
                         style={{
                           height: `${Math.max(rate, 4)}%`,
                           backgroundColor:
-                            rate >= 80 ? '#10b981' : rate >= 50 ? tokens.colors.primary : tokens.colors.accent,
+                            rate >= 80 ? '#10b981' : rate >= 50 ? tokens.primary : tokens.accent,
                         }}
                       ></div>
                     </div>
-                    <span className="text-xs font-bold" style={{ color: tokens.colors.text }}>
+                    <span className="text-xs font-bold" style={{ color: tokens.text }}>
                       {rate}%
                     </span>
                   </div>
