@@ -1,0 +1,37 @@
+{
+  "name": "habitflow",
+  "version": "1.0.0",
+  "description": "Full-stack daily habit tracking application",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=backend\" \"npm run dev --workspace=frontend\" --names \"api,web\" --prefix-colors \"yellow,cyan\"",
+    "build": "npm run build --workspace=frontend",
+    "start": "concurrently \"npm run start --workspace=backend\" \"npm run start --workspace=frontend\" --names \"api,web\" --prefix-colors \"yellow,cyan\"",
+    "lint": "npm run lint --workspace=frontend && npm run lint --workspace=backend",
+    "lint:fix": "npm run lint --workspace=frontend -- --fix && npm run lint --workspace=backend -- --fix",
+    "clean": "rimraf frontend/.next frontend/node_modules backend/node_modules node_modules",
+    "install:all": "npm install && npm install --workspace=frontend && npm install --workspace=backend"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "rimraf": "^5.0.5"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "habit-tracker",
+    "nextjs",
+    "express",
+    "supabase",
+    "tailwindcss",
+    "productivity"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
